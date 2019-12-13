@@ -1,0 +1,66 @@
+package com.capgemini.phonesimulatorapplication.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.phonesimulatorapplication.bean.UserBean;
+import com.capgemini.phonesimulatorapplication.dao.DAO;
+import com.capgemini.phonesimulatorapplication.factory.Factory;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc= new Scanner(System.in);
+		System.out.println("****Phone Simulator Application****");
+		System.out.println("---------------------------------------");
+
+		System.out.println("Enter 1 to Show all contacts");
+		System.out.println("Enter 2 to Search for contact using name");
+		System.out.println("Enter 3 to Operate on Contact");
+		int choice= sc.nextInt();
+
+		switch(choice) {
+		case 1:
+			DAO d= Factory.insataceOfDaoImpl();
+			List<UserBean> list = d.getAllContacts();
+
+			if(list!=null)
+				for(UserBean user: list) {
+					System.out.println(user);
+				}
+
+		case 2:
+			System.out.println("Enter 1 to call");
+			System.out.println("Enter 2 to Message");
+			System.out.println("Enter 3 to go back to main menu");
+			int choice1= sc.nextInt();
+			switch(choice1) {
+			case 1:
+
+			}
+
+
+		case 3:
+			UserBean user= new UserBean();
+			System.out.println("Enter Name");
+			user.setName(sc.next());
+			System.out.println("enter username");
+			user.setUsername(sc.nextLine());
+			System.out.println("enter emailid");
+			user.setEmail(sc.nextLine());
+			System.out.println("enter password");
+			user.setPassword(sc.nextLine());
+
+			if(services.insertUser(user)) {
+				System.out.println("user inserted");
+			}
+			else {
+				System.err.println("something went wrong");
+			}
+		}
+
+	case 4:
+	}
+
+}
+
+}

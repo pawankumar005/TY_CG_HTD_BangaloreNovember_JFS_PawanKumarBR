@@ -1,0 +1,4 @@
+driverClass=com.mysql.jdbc.Driver
+dbUrl=jdbc:mysql://localhost:3307/ty_cg_nov6
+dbuser=root
+dbpass=root

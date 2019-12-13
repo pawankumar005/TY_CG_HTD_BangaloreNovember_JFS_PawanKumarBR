@@ -1,0 +1,5 @@
+package com.capgemini.phonesimulatorapplication.bean;
+
+public class UserBean {
+
+}

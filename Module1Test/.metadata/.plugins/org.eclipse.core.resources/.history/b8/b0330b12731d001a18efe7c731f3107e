@@ -1,0 +1,9 @@
+driverClass=com.mysql.jdbc.Driver
+dbUrl=jdbc:mysql://localhost:3307/ContactFile
+dbuser=root
+dbpass=root
+query1= select * from contact
+insert= insert into contact values(?,?,?)
+delete= delete from contact where Name=?
+numEdit= update contact set Phone_num=? where Name=?
+groupEdit= update contact set Groups=? where Name=?

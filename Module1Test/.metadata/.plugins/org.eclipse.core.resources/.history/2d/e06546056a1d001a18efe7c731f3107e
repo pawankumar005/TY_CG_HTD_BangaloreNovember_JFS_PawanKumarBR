@@ -1,0 +1,70 @@
+package com.capgemini.phonesimulatorapplication.dao;
+
+import java.sql.DriverManager;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.capgemini.phonesimulatorapplication.bean.UserBean;
+import com.mysql.jdbc.Connection;
+
+public class DaoImpl implements DAO {
+	
+	
+	public DAOImpl() {
+	      try {
+			reader= new FileReader("db.properties");
+			prop= new Properties();
+			 prop.load(reader);
+			Class.forName(prop.getProperty("driverClass"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	List<UserBean>list= new ArrayList<UserBean>();
+
+	@Override
+	public List<UserBean> getAllContacts() {
+		try(Connection conn= DriverManager.getConnection(prop.getProperty("dbUrl"), prop.getProperty("dbuser"),
+				prop.getProperty("dbpass"));
+				Statement stmt= conn.createStatement();
+				ResultSet rs= stmt.executeQuery(prop.getProperty("query1"));){
+			while(rs.next()) {
+				user= new UserBean();
+				user.setUserid(rs.getInt(1));
+				user.setUsername(rs.getString(2));
+				user.setEmail(rs.getString(3));
+				user.setPassword(rs.getString(4));
+				list.add(user);
+			}
+			
+		}catch(Exception e) {
+			
+		}
+		return list;
+	}
+
+	@Override
+	public boolean addContact(UserBean user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteContact(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean editPhoneNum(long num) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean editGroup(String group) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
